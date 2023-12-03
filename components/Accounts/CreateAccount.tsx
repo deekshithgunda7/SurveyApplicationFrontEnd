@@ -4,7 +4,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Link from "next/link";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import globalUseStyles from "../common/GlobalStyles";
 import {
     Button,
     Checkbox,
@@ -54,12 +53,7 @@ let initialValues: AccountDetails = {
     others:0,
     floor: []
 };
-// const regionList = [
-//     '1',
-//     '2',
-//     '3',
-//     '4'
-// ];
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -129,8 +123,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 const createAccount: React.FC<CreateAccountProps> = ({open, setOpen, subscriptionData}) => {
     const classes = useStyles();
-    const globalClasses = globalUseStyles();
-    // const [regions, setRegions] = React.useState<string[]>([]);
     const [floor, setFloor] = React.useState("");
     const [time, setTime] = React.useState("");
     const [openSelect, setOpenSelect] = React.useState(false);
@@ -143,20 +135,14 @@ const createAccount: React.FC<CreateAccountProps> = ({open, setOpen, subscriptio
     };
 
 
-    const handleSelectClose = () => {
-        setOpenSelect(false);
-    };
-
-    const handleOpen = () => {
-        setOpenSelect(true);
-    };
+  
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setFloor(event.target.value as string);
       };
     const handleTimeChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setTime(event.target.value as string);
       };  
-    // const filteredRegions = regions?.filter((item) => item)
+    
     return (
         <div>
             <Dialog
@@ -247,22 +233,7 @@ const createAccount: React.FC<CreateAccountProps> = ({open, setOpen, subscriptio
                         >
                             {({setFieldValue}) => (
                                 <Form>
-                         {/* <FormGroup>
-                            <FormHelperText required className={classes.inputLabels}>
-                                Time
-                            </FormHelperText>
-                            <Field
-                                as={OutlinedInput}
-                                id="time"
-                                type="string"
-                                name="time"
-                                // disabled={true}
-                                className={classes.textField}
-                            />
-                            <div className={classes.errorMessages}>
-                                <ErrorMessage name="time"/>
-                            </div>
-                        </FormGroup> */}
+                        
                           <FormGroup>
                            <FormControl variant="outlined" className={classes.multiSelect}>
                 <InputLabel id="demo-simple-select-outlined-label">
@@ -389,66 +360,7 @@ const createAccount: React.FC<CreateAccountProps> = ({open, setOpen, subscriptio
                   <MenuItem value={4}>Fourth</MenuItem>
                 </Select>
               </FormControl>
-                        </FormGroup>
-                        {/* <FormGroup>
-                            <FormHelperText id="outlined-weight-helper-text"
-                                            className={classes.inputLabels}>Floor</FormHelperText>
-                            <Select
-                                MenuProps={{
-                                    className: classes.menu,
-                                    anchorOrigin: {
-                                        vertical: "bottom",
-                                        horizontal: "left"
-                                    },
-                                    transformOrigin: {
-                                        vertical: "top",
-                                        horizontal: "left"
-                                    },
-                                    getContentAnchorEl: null
-                                }}
-                                labelId="mutiple-select-label"
-                                open={openSelect}
-                                onOpen={handleOpen}
-                                multiple
-                                id="floor"
-                                value={regions ? regions : []}
-                                onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-                                    setRegions(event.target.value as string[]);
-                                    setFieldValue("floor", event.target.value != "" ? event.target.value as string[] : []);
-                                }}
-                                input={<OutlinedInput/>}
-                                renderValue={(selected) => {
-                                    if ((selected as string[]).filter((item: any) => item).length === 0) {
-                                        return <>Select</>;
-                                    }
-                                    return (selected as string[]).filter((item: any) => item).join(',')
-                                }}
-                            
-                                className={classes.multiSelect}
-                                fullWidth
-                                name="floor"
-                                variant="outlined"
-                                displayEmpty
-                            >
-                                <MenuItem style={{marginBottom: "10px", backgroundColor: 'transparent', opacity: 0.5}}
-                                          value="">
-                                    <Box style={{position: "absolute", right: 10}}>
-                                        <MinimizeIcon onClick={handleSelectClose}/>
-                                    </Box>
-                                </MenuItem>
-                                {regionList.map((app) => (
-                                    <MenuItem key={app} value={app}>
-                                        <Checkbox checked={regions?.indexOf(app) > -1}/>
-                                        <ListItemText primary={app}/>
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                            <div className={classes.errorMessages}>
-                                <ErrorMessage name="floor"/>
-                            </div>
-                        </FormGroup> */}
-
-                            
+                        </FormGroup>    
                             <Button type="submit" variant="contained" className={classes.addButton}>
                                 Save
                             </Button>

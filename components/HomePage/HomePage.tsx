@@ -3,9 +3,8 @@ import {makeStyles, createStyles, Theme} from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import {useMsal} from "@azure/msal-react";
-import {AccountsSVG, AppsSVG, GroupsSVG, SchedulesSVG} from "../../assets/svg/icons";
+import {AccountsSVG} from "../../assets/svg/icons";
 import HomeCard from "../../resusable-components/HomeCard";
-import useSWR from "swr";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -32,21 +31,15 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-// const getName = (accounts) => {
-//     return accounts[0].name.split(" ")[0];
-// }
+
 
 const HomePage = () => {
     const classes = useStyles();
-    // const {accounts} = useMsal();
-   
-    const {data: accountData, error: groupError} = useSWR("/survey")
     return (
         <div className={classes.root}>
             <div>
                 <Paper elevation={3} className={classes.paper}>
                     <Typography gutterBottom className={classes.heading}>
-                        {/* Hello, {getName(accounts)} */}
                         Hello
                     </Typography>
                     <Typography gutterBottom>

@@ -92,14 +92,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface AccountDetailsProps {
-  id: number;
+  id: string;
 }
 
 const AccountDetails: React.FC<AccountDetailsProps> = ({ id }) => {
   const classes = useStyles();
   const globalClasses = globalUseStyles();
-  const [age, setAge] = React.useState("");
-
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const router = useRouter();
   const accountInfoUrl = "/survey/" + id;
@@ -117,17 +115,6 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ id }) => {
     setTime(event.target.value as string);
   };  
 
-  // React.useEffect(() => {
-  //     setFloor(data?.floor)
-  // }, [data])
-  
-  const handleSelectClose = () => {
-    setOpenSelect(false);
-  };
-
-  const handleOpen = () => {
-    setOpenSelect(true);
-  };
   
   if (data) {
     console.log(data, "in data loop");
@@ -223,22 +210,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ id }) => {
       >
         {({ setFieldValue }) => (
           <Form>
-            {/* <FormGroup>
-              <FormHelperText required className={classes.inputLabels}>
-                Time
-              </FormHelperText>
-              <Field
-                as={OutlinedInput}
-                id="time"
-                type="string"
-                name="time"
-                // disabled={true}
-                className={classes.multiSelect}
-              />
-              <div className={classes.errorMessages}>
-                <ErrorMessage name="time" />
-              </div>
-            </FormGroup> */}
+           
             <FormGroup>
              <FormControl variant="outlined" className={classes.multiSelect}>
                 <InputLabel id="demo-simple-select-outlined-label">
@@ -341,9 +313,6 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ id }) => {
               </div>
             </FormGroup>
             <FormGroup>
-            {/* <FormHelperText required className={classes.inputLabels}>
-                Floor
-              </FormHelperText> */}
               <FormControl variant="outlined" className={classes.multiSelect}>
                 <InputLabel id="demo-simple-select-outlined-label">
                   Floor
@@ -364,64 +333,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ id }) => {
                   <MenuItem value={4}>Fourth</MenuItem>
                 </Select>
               </FormControl>
-            </FormGroup>
-            {/* <FormGroup>
-                            <FormHelperText id="outlined-weight-helper-text"
-                                            className={classes.inputLabels}>Floor</FormHelperText>
-                            <Select
-                                MenuProps={{
-                                    className: classes.menu,
-                                    anchorOrigin: {
-                                        vertical: "bottom",
-                                        horizontal: "left"
-                                    },
-                                    transformOrigin: {
-                                        vertical: "top",
-                                        horizontal: "left"
-                                    },
-                                    getContentAnchorEl: null
-                                }}
-                                labelId="mutiple-select-label"
-                                open={openSelect}
-                                onOpen={handleOpen}
-                                multiple
-                                id="floor"
-                                value={floor ? floor : []}
-                                onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-                                    setFloor(event.target.value as string[]);
-                                    setFieldValue("floor", event.target.value != "" ? event.target.value as string[] : []);
-                                }}
-                                input={<OutlinedInput/>}
-                                renderValue={(selected) => {
-                                    if ((selected as string[]).filter((item: any) => item).length === 0) {
-                                        return <>Select</>;
-                                    }
-                                    return (selected as string[]).filter((item: any) => item).join(',')
-                                }}
-                            
-                                className={classes.multiSelect}
-                                fullWidth
-                                name="floor"
-                                variant="outlined"
-                                displayEmpty
-                            >
-                                <MenuItem style={{marginBottom: "10px", backgroundColor: 'transparent', opacity: 0.5}}
-                                          value="">
-                                    <Box style={{position: "absolute", right: 10}}>
-                                        <MinimizeIcon onClick={handleSelectClose}/>
-                                    </Box>
-                                </MenuItem>
-                                {floorList.map((app) => (
-                                    <MenuItem key={app} value={app}>
-                                        <Checkbox checked={floor?.indexOf(app) > -1}/>
-                                        <ListItemText primary={app}/>
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                            <div className={classes.errorMessages}>
-                                <ErrorMessage name="floor"/>
-                            </div>
-                        </FormGroup> */}
+            </FormGroup>                   
 
             <Button
               type="submit"

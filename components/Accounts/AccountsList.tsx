@@ -143,9 +143,6 @@ const Accounts: React.FC = () => {
     return (
         <div className={classes.root} id="accounts">
             <EnhancedTable setAccountNames={setAccountNames} setStaticAccountNames={setStaticAccountNames}/>
-            {/* <div className={classes.div}>
-                <LineChart cloudProvider={cloudProvider} accountNames={accountNames} staticAccountNames={staticAccountNames}/>
-            </div> */}
         </div>
     );
 }
@@ -169,17 +166,7 @@ const EnhancedTable = (props) => {
     console.log(rows,".....")
     let rowdata=data&&data
 
-    // React.useEffect(()=>{
-    //     const getAccountNames=()=>{
-    //         let accountArray=[];
-    //         rows?.map((item)=>{
-    //             accountArray.push({name:item?.subscription_name})
-    //         })
-    //         return accountArray;
-    //     }
-    //     props?.setAccountNames(getAccountNames());
-    //     props?.setStaticAccountNames(getAccountNames());
-    // },[rowdata])
+   
 
 
     /***
@@ -269,16 +256,7 @@ const EnhancedTable = (props) => {
         }
         return selectedIndex !== -1;
     };
-    // const isSelected = (id: any, name: any) => {
-    //     let selectedIndex = -1;
-    //     for (let i = 0, len = selected.length; i < len; i++) {
-    //         if (selected[i].id === id && selected[i].name == name) {
-    //             selectedIndex = i;
-    //             break;
-    //         }
-    //     }
-    //     return selectedIndex !== -1;
-    // };
+    
 
     /***
      * Handle deletion of groups.
@@ -326,10 +304,7 @@ const EnhancedTable = (props) => {
      * @param event
      */
 
-    const handleOnSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(event.target.value);
-        setPage(0);
-    };
+    
 
     const normalizedSearch = search.toLowerCase();
 
@@ -342,11 +317,7 @@ const EnhancedTable = (props) => {
 
      const emptyRows = rowsPerPage - Math.min(rowsPerPage, filteredAccounts.length - page * rowsPerPage);
 
-    const handleClear = () => {
-        setSearch("");
-        const searchInput: any = document.getElementById("search")
-        searchInput.value = ""
-    };
+    
 
     // @ts-ignore
     return (
@@ -360,11 +331,7 @@ const EnhancedTable = (props) => {
                     <DeleteSVG/>
                 </div>
 
-                {/* <div className={classes.searchInput}>
-                    <SearchInput  placeHolder={"Search"} onChange={handleOnSearchChange} search={search} onClick={handleClear} height={"35px"}
-                                 width={"219px"}/>
-                </div> */}
-
+               
             </div>
             <div>
                 <Confirmation

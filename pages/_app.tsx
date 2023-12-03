@@ -7,13 +7,9 @@ import Navigator from "../components/common/Navigator";
 import axios from 'axios';
 import {SWRConfig} from 'swr';
 import {SnackbarProvider} from 'notistack';
-// import {MsalProvider} from "@azure/msal-react";
-// import {PublicClientApplication} from "@azure/msal-browser";
-import {msalConfig} from "../config/authConfig";
 import LightTheme from '../components/themes/soho/LightTheme';
 import {settings} from "../config/settings";
 
-// const msalInstance = new PublicClientApplication(msalConfig);
 axios.defaults.baseURL = settings.apiEndPoint;
 
 
@@ -31,19 +27,17 @@ export default function MyApp(props) {
     return (
         <React.Fragment>
             <Head>
-                <title>Hanover</title>
+                <title>CSU_LibrarySurvey</title>
                 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
             </Head>
             <ThemeProvider theme={LightTheme}>
                 <CssBaseline/>
                 <SnackbarProvider maxSnack={1}>
-                    {/* <MsalProvider instance={msalInstance}> */}
                         <Navigator>
                             <SWRConfig value={{fetcher: (url: string) => axios(url).then(r => r.data)}}>
                                 <Component {...pageProps} />
                             </SWRConfig>
                         </Navigator>
-                 {/* </MsalProvider> */}
                 </SnackbarProvider>
             </ThemeProvider>
         </React.Fragment>
