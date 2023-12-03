@@ -107,7 +107,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ id }) => {
   const [floor, setFloor] = React.useState("");
   const [time, setTime] = React.useState("");
   const [openSelect, setOpenSelect] = React.useState(false);
-  console.log(data, "from accdetails,,.");
+  console.log(data, "from surveydetails,,.");
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setFloor(event.target.value as string);
@@ -128,7 +128,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ id }) => {
   const handleOpen = () => {
     setOpenSelect(true);
   };
-  // const filteredFloor = floor?.filter((item) => item)
+  
   if (data) {
     console.log(data, "in data loop");
     initialValues["time"] = data["time"];
@@ -158,7 +158,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ id }) => {
             const putUrl = "/survey/" + id;
             try {
               await axios.put(putUrl, {
-                time: values.time,
+                time: time,
                 computers: values.computers,
                 studyCarols: values.studyCarols,
                 softSeating: values.softSeating,
