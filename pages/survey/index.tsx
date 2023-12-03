@@ -10,14 +10,7 @@ const Account = () => {
     const {id, tab} = router.query;
     return (
         <div>
-            {/* <AuthenticatedTemplate> */}
-                {/* <AccountsTab
-                    selectedTab={0}
-                    id={"" + id}
-                /> */}
                 <AccountList/>
-            {/* </AuthenticatedTemplate> */}
-            {/* <LoginToContinue/> */}
         </div>
     );
 };
